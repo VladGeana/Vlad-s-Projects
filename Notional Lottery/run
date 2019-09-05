@@ -1,0 +1,3 @@
+#!/bin/bash
+mainClass=LotteryTest$1
+java -classpath .:/opt/info/courses/COMP16212/ex2/Lottery.jar $mainClass
