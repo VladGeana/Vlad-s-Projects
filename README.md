@@ -1,3 +1,5 @@
+# Algorithms - C++
+Some of the most relevant algorithms I have implemented during highschool, after reading online articles about each of them beforehand.
 # Data Structures - C++ 
 Binary Indexed Trees, RMQ - sparse table, Segment Trees and more..
 # Notional Lottery Simulation - Java
