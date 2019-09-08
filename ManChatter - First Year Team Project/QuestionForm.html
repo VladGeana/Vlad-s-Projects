@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<head>
+  <script>
+    function startDictation() {
+
+      if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+        var recognition = new webkitSpeechRecognition();
+
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        recognition.lang = "en-UK";
+        recognition.start();
+
+        recognition.onresult = function(e) {
+          document.getElementById('transcript').value
+                                   = e.results[0][0].transcript;
+          recognition.stop();
+        };
+
+        recognition.onerror = function(e) {
+          recognition.stop();
+        }
+}
+      }
+      
+      function startDictation2() {
+
+      if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+        var recognition = new webkitSpeechRecognition();
+
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        recognition.lang = "en-UK";
+        recognition.start();
+
+        recognition.onresult = function(e) {
+          document.getElementById('transcript2').value
+                                   = e.results[0][0].transcript;
+          recognition.stop();
+        };
+
+        recognition.onerror = function(e) {
+          recognition.stop();
+        }
+
+      }
+    }
+  </script>
+
+  <style>
+    /* {
+    box-sizing: border-box;
+  }*/
+
+  input[type=text], select, textarea {
+    width: 70%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+
+  input[type=submit] {
+    background-color: rgb(106, 44, 143);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+
+  input[type=submit]:hover {
+    background-color: rgb(142, 20, 186);
+  }
+
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+  </style>
+</head>
+
+
+<div class="container">
+  <form id="labnol" action="AskThanks.php" method="POST">
+    <h2>What's the buzz?</h2>
+    <div class="row">
+      <div class="col-25">
+        <label for="cat">Category</label>
+      </div>
+      <div class="col-75">
+        <select name = "cat" id = "labnol">
+          <option value="Other">Select a category:</option>
+          <option value="Finances">Finances</option>
+          <option value="Accommodation">Accommodation</option>
+          <option value="Applying">Applying</option>
+          <option value="Courses">Courses</option>
+          <option value="Food">Food</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Nightlife">Nightlife</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="title">Question</label>
+      </div>
+      <div class="col-75">
+        <input id="transcript" type="text" name="title" placeholder="The question.." required>
+        <img onclick="startDictation()" src="mic.png"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="message">Explanation</label>
+      </div>
+      <div class="col-75">
+          
+        <!--<input id="transcript2" type = "text" name="message" placeholer="The explenation of the question.."  style="height:200px" required>-->
+        <textarea id="transcript2" name="message" placeholder="The explanation of the question.."  style="height:200px" required></textarea>
+        <img onclick="startDictation2()" src="mic.png"/>
+
+      </div>
+    </div>
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>
